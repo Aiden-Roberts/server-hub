@@ -1,0 +1,21 @@
+# Minecraft worlds and generated server data
+minecraft-data/
+minecraft-modpack-staging/
+
+# Grafana persistent data
+monitoring/grafana/
+
+# Logs
+*.log
+logs/
+
+# Secrets / environment files
+.env
+*.env
+
+# Backups
+*-backup-*/
+
+# OS/editor files
+.DS_Store
+Thumbs.db

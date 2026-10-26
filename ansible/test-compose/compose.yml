@@ -1,0 +1,6 @@
+services:
+  ansible-test:
+    image: alpine:3.20
+    container_name: ansible-test
+    command: ["sh", "-c", "echo 'Ansible Docker deployment works!' && sleep 3600"]
+    restart: unless-stopped

@@ -1,0 +1,6 @@
+- name: Apply homelab baseline
+  hosts: homelab
+  become: true
+
+  roles:
+    - homelab_baseline

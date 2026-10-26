@@ -1,0 +1,18 @@
+---
+homelab_name: "ubuntu-homelab"
+homelab_environment: "lab"
+
+# Customize these values for your own server.
+homelab_project_root: "/home/ubuntu/server-hub"
+homelab_owner: "ubuntu"
+homelab_group: "ubuntu"
+
+homelab_management_dir: "/opt/homelab"
+homelab_test_compose_dir: "/home/ubuntu/server-hub/ansible/test-compose"
+
+homelab_packages:
+  - curl
+  - git
+  - vim
+  - htop
+  - unzip

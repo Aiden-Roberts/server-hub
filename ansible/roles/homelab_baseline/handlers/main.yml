@@ -1,0 +1,4 @@
+---
+- name: Homelab configuration changed
+  ansible.builtin.debug:
+    msg: "Homelab configuration changed and requires downstream service handling."

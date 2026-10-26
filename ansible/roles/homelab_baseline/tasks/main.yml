@@ -1,0 +1,56 @@
+---
+- name: Ensure homelab tools directory exists
+  ansible.builtin.file:
+    path: "{{ homelab_management_dir }}"
+    state: directory
+    owner: "{{ homelab_owner }}"
+    group: "{{ homelab_group }}"
+    mode: "0755"
+
+- name: Create homelab metadata file
+  ansible.builtin.copy:
+    dest: "{{ homelab_management_dir }}/README.txt"
+    content: |
+      Homelab managed by Ansible
+      Server: {{ homelab_name }}
+      Purpose: Cybersecurity and Computer Science homelab
+    owner: "{{ homelab_owner }}"
+    group: "{{ homelab_group }}"
+    mode: "0644"
+
+- name: Create homelab configuration file
+  ansible.builtin.copy:
+    dest: "{{ homelab_management_dir }}/homelab.conf"
+    content: |
+      HOMELAB_NAME={{ homelab_name }}
+      ENVIRONMENT={{ homelab_environment }}
+      MANAGEMENT_METHOD=ansible
+      PROJECT_ROOT={{ homelab_project_root }}
+    owner: "{{ homelab_owner }}"
+    group: "{{ homelab_group }}"
+    mode: "0644"
+  notify:
+    - Homelab configuration changed
+
+- name: Ensure baseline packages are installed
+  ansible.builtin.apt:
+    name: "{{ homelab_packages }}"
+    state: present
+    update_cache: false
+
+- name: Ensure cron service is enabled and running
+  ansible.builtin.service:
+    name: cron
+    enabled: true
+    state: started
+
+- name: Ensure Docker service is enabled and running
+  ansible.builtin.service:
+    name: docker
+    enabled: true
+    state: started
+
+- name: Deploy Ansible Docker test container
+  community.docker.docker_compose_v2:
+    project_src: "{{ homelab_test_compose_dir }}"
+    state: present

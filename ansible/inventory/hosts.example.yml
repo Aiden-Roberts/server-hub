@@ -1,0 +1,7 @@
+all:
+  hosts:
+    homelab:
+      ansible_host: 192.0.2.10
+      ansible_user: ubuntu
+      # Replace with the target server's actual address and SSH user.
+      # For remote execution, remove ansible_connection: local

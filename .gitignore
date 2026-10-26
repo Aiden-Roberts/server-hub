@@ -19,3 +19,61 @@ logs/
 # OS/editor files
 .DS_Store
 Thumbs.db
+
+# Private credentials and secrets
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+vault-passwords*
+credentials*
+
+# Local configuration
+.env.*
+!.env.example
+*.local
+
+# Backups and temporary files
+*.bak
+*.backup
+*.old
+*.tmp
+*.swp
+*~
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Terraform state, if used in future
+*.tfstate
+*.tfstate.*
+
+# Ansible generated files
+*.retry
+
+# Pi-hole live runtime data - do not publish
+pihole/etc-pihole/
+
+# Local Ansible inventory
+ansible/inventory/hosts.yml
+
+# Generated backup archives
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Pi-hole local DNS configuration
+pihole/etc-dnsmasq.d/
+
+# Private Ansible inventory
+ansible/inventory/hosts.yml
+
+# Python cache and virtual environments
+__pycache__/
+.venv/
+venv/
